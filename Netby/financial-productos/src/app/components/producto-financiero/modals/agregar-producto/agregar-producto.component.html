@@ -1,0 +1,80 @@
+<div id='modal' class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h5 class="modal-title">Formulario de Registro</h5>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <label for="id" class="col-form-label">ID</label>
+            <input type="text" id="id" formControlName="id" required [ngClass]="!isControlValid('id') ? 'error-input' : ''" #id>
+            <div *ngIf="!isControlValid('id')">
+              <div *ngIf="productoForm.get('id')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+          <div class="form-group text-left">
+            <label for="nombre" class="col-form-label">Nombre</label>
+            <input type="text" id="nombre" formControlName="nombre" required [ngClass]="!isControlValid('nombre') ? 'error-input' : ''">
+            <div *ngIf="!isControlValid('nombre')">
+              <div *ngIf="productoForm.get('nombre')!.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <label for="descripcion" class="col-form-label">Descripción</label>
+            <input type="text" id="descripcion" formControlName="descripcion" required [ngClass]="!isControlValid('descripcion') ? 'error-input' : ''">
+            <div *ngIf="!isControlValid('descripcion')">
+              <div *ngIf="productoForm.get('descripcion')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>        
+          <div class="form-group text-left">
+            <label for="imagen" class="col-form-label">Imagen</label>
+            <input type="text" id="imagen" formControlName="imagen" required [ngClass]="!isControlValid('imagen') ? 'error-input' : ''">
+            <div *ngIf="!isControlValid('imagen')">
+              <div *ngIf="productoForm.get('imagen')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <label for="categoria" class="col-form-label">Categoria</label>
+            <input type="text" id="categoria" formControlName="categoria" required [ngClass]="!isControlValid('categoria') ? 'error-input' : ''">
+            <div *ngIf="!isControlValid('categoria')">
+              <div *ngIf="productoForm.get('categoria')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>        
+          <div class="form-group text-left">
+            <label for="precio" class="col-form-label">Precio</label>
+            <input type="text" id="precio" formControlName="precio" required [ngClass]="!isControlValid('precio') ? 'error-input' : ''">
+            <div *ngIf="!isControlValid('precio')">
+              <div *ngIf="productoForm.get('precio')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <label for="stock" class="col-form-label">stock</label>
+            <input type="text" id="stock" class="form-control" formControlName="stock" required [ngClass]="!isControlValid('stock') ? 'error-input' : ''">
+            <div *ngIf="!isControlValid('stock')">
+              <div *ngIf="productoForm.get('stock')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div> 
+          
+        </div>
+        <div class="row-flex margin-10" *ngIf="existeId">
+          <div class="error">El ID ya existe</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn button-secondary" (click)="resetForm()">Reiniciar</button>
+          <button type="submit" [class]=" productoForm.valid ? 'btn button-secondary' : 'btn button-secondary disabled'" [disabled]="productoForm.invalid">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

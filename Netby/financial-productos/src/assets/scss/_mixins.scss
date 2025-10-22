@@ -1,0 +1,3 @@
+@mixin fontdef($path, $version, $weight) {
+  src: url("#{$path}/#{$weight}/OpenSans-#{$weight}.woff2?v=#{$version}") format("woff2"), url("#{$path}/#{$weight}/OpenSans-#{$weight}.woff?v=#{$version}") format("woff");
+}

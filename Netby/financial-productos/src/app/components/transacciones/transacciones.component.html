@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="text-center">
+        <div class="row-flex-between col-75 div-spacing center-content">
+            <input id="filtro" type="text" placeholder="detalle..." [(ngModel)]="searchTerm" (keyup)="onSearch($event)">
+            <button class="btn button-secondary" (click)="openModalAgregarTransaccion()">Agregar</button>
+        </div>
+        <div class="col-12 text-center background-white div-spacing center-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="text-center">Producto</th>
+                        <th class="text-left">Cantidad</th>
+                        <th class="text-left">Precio Unitario</th>
+                        <th class="text-center">Precio Total</th>
+                        <th class="text-center">Detalle</th>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">Tipo Transaccion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let transaccion of transaccionesFiltrados">
+                        <td class="text-left">{{obtenerProductoPorId(transaccion.idProducto)}}</td>
+                        <td class="text-left">{{transaccion.cantidad}}</td>
+                        <td class="text-center">{{transaccion.precioUnitario | currency:'USD'}}</td>
+                        <td class="text-center">{{transaccion.precioTotal | currency:'USD'}}</td>
+                        <td class="text-center">{{transaccion.detalle}}</td>
+                        <td class="text-center">{{transaccion.fecha | date:'dd/MM/yyyy'}}</td>
+                        <td class="text-center">{{transaccion.tipoTransaccion}}</td>
+                        <td class="text-center"> 
+                            <div class="dropdown">
+                                <button type="button" class="dots-down" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <button class="dropdown-item" type="button" (click)="modal.openModalEditar(transaccion)">Editar</button>
+                                    <button class="dropdown-item" type="button" (click)="openModal(transaccion)">Eliminar</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center">
+                            <span>{{transaccionesFiltrados!.length}} resultados</span>
+                        </td>
+                        <td colspan="4"></td>
+                        <td class="text-center">
+                            <select id="paginador" (change)="filtrarProductos($event)">
+                                <option value="0">Seleccione</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div id='modalEliminar' class="modal">
+        <div class="modal-content">
+            <h2>Está seguro de eliminar la transaccion {{transaccionEliminar!.detalle}}</h2>
+            <hr class="margin-20">
+            <div class="row-flex-between margin-10 padding-20">
+                <button type="button" class="btn button-box" (click)="closeModal()">Cancelar</button>
+                <button type="submit" class="btn button-secondary" (click)="eliminarTransaccion(transaccionEliminar)" >Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-toast #toast></app-toast>
+<app-agregar-transaccion (formSubmitted)="guardarTransaccion($event.producto,$event.accion)" #modal></app-agregar-transaccion>

@@ -1,0 +1,97 @@
+<div id='modal' class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h5 class="modal-title">Formulario de Registro</h5>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="transaccionForm" (ngSubmit)="onSubmit()">
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <label for="id" class="col-form-label">ID</label>
+            <input type="text" id="id" formControlName="id" class="form-control" required [ngClass]="!isControlValid('id') ? 'error-input' : ''" #id appSoloNumero>
+            <div *ngIf="!isControlValid('id')">
+              <div *ngIf="transaccionForm.get('id')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Productos
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu drop-down-overflow">
+                    <input class="form-control" id="inputFiltroProducto" type="text" placeholder="Search.." (keyup)="onSearchProducto($event)">
+                    <li *ngFor="let producto of productosFiltrados"><a class="dropdown-item" (click)="seleccionarProducto(producto)">{{producto.nombre}}</a></li>
+                </ul>
+            </div>
+          </div>
+          <div class="form-group text-left">
+            <label for="nombreProducto" class="sr-only">Producto</label>
+            <span class="col-form-label">{{transaccionForm.get('producto')?.value}}</span>
+            <input type="text" id="nombreProducto" class="form-control" formControlName="nombreProducto" readonly>
+          </div>
+        </div>
+        
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <label for="cantidad" class="col-form-label">Cantidad</label>
+            <input type="text" id="cantidad" formControlName="cantidad" class="form-control" required [ngClass]="!isControlValid('cantidad') ? 'error-input' : ''" appSoloNumero>
+            <div *ngIf="!isControlValid('cantidad')">
+              <div *ngIf="transaccionForm.get('cantidad')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>        
+          <div class="form-group text-left">
+            <label for="precioUnitario" class="col-form-label">Precio Unitario</label>
+            <input type="text" id="precioUnitario" formControlName="precioUnitario" class="form-control" required [ngClass]="!isControlValid('precioUnitario') ? 'error-input' : ''" (blur)="CalcularPrecioTotal()" appSoloNumero>
+            <div *ngIf="!isControlValid('precioUnitario')">
+              <div *ngIf="transaccionForm.get('precioUnitario')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <label for="precioTotal" class="col-form-label">Precio Total</label>
+            <input type="text" id="precioTotal" formControlName="precioTotal" class="form-control" readonly>
+          </div>        
+          <div class="form-group text-left">
+            <label for="detalle" class="col-form-label">Detalle</label>
+            <input type="text" id="detalle" formControlName="detalle" required class="form-control" [ngClass]="!isControlValid('detalle') ? 'error-input' : ''">
+            <div *ngIf="!isControlValid('detalle')">
+              <div *ngIf="transaccionForm.get('detalle')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row-flex">
+          <div class="form-group text-left col-6">
+            <label for="fecha" class="col-form-label">Fecha</label>
+            <input type="date" id="fecha" class="form-control" formControlName="fecha" required [ngClass]="!isControlValid('fecha') ? 'error-input' : ''">
+            <div *ngIf="!isControlValid('fecha')">
+              <div *ngIf="transaccionForm.get('fecha')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+          <div class="form-group text-left">
+            <label for="detalle" class="col-form-label mb-7">Tipo Transaccion</label>
+            <select id="tipoTransaccion" class="form-control" formControlName="tipoTransaccion" required [ngClass]="!isControlValid('tipoTransaccion') ? 'error-input' : ''">
+              <option value="ingreso">Compra</option>
+              <option value="egreso">Venta</option>
+            </select>
+            <div *ngIf="!isControlValid('tipoTransaccion')">
+              <div *ngIf="transaccionForm.get('tipoTransaccion')?.errors?.['required']" class="error">{{inputRequeridos}}</div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row-flex margin-10" *ngIf="existeId">
+          <div class="error">El ID ya existe</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn button-secondary" (click)="resetForm()">Reiniciar</button>
+          <button type="submit" [class]=" transaccionForm.valid ? 'btn button-secondary' : 'btn button-secondary disabled'" [disabled]="transaccionForm.invalid">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

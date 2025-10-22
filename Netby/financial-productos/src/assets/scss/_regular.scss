@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Open Sans Regular';
+  @include fontdef($OpenSansPath, $OpenSansVersion, "Regular");
+  font-weight: normal;
+  font-style: normal;
+}

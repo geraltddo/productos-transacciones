@@ -1,0 +1,21 @@
+﻿namespace ApiProductos.Domains.Response
+{
+    public class Response<T>
+    {
+        public bool Success { get; set; }
+        public bool Error { get; set; }
+        public string? Message { get; set; }
+
+        public T? Data { get; set; }
+
+        public Response(bool success, string? message, T? data, bool error)
+        {
+            Success = success;
+            Message = message;
+            Data = data;
+            Error = error;
+        }
+
+        public Response() { }
+    }
+}

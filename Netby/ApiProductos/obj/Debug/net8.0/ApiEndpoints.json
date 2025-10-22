@@ -1,0 +1,181 @@
+[
+  {
+    "ContainingType": "ApiProductos.Controllers.ProductoController",
+    "Method": "ActualizarProducto",
+    "RelativePath": "api/Producto/ActualizarProducto/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "producto",
+        "Type": "ApiProductos.Domains.Request.ProductoRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.ProductoController",
+    "Method": "EliminarProducto",
+    "RelativePath": "api/Producto/EliminarProducto/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.ProductoController",
+    "Method": "GuardarProducto",
+    "RelativePath": "api/Producto/GuardarProducto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "producto",
+        "Type": "ApiProductos.Domains.Request.ProductoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.ProductoController",
+    "Method": "ObtenerProducto",
+    "RelativePath": "api/Producto/ObtenerProductoId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.ProductoController",
+    "Method": "ObtenerProductos",
+    "RelativePath": "api/Producto/ObtenerProductos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.TransaccionController",
+    "Method": "ActualizarTransaccion",
+    "RelativePath": "api/Transaccion/ActualizarTransaccion/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "transaccion",
+        "Type": "ApiProductos.Domains.Request.TransaccionRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.TransaccionController",
+    "Method": "EliminarTransaccion",
+    "RelativePath": "api/Transaccion/EliminarTransaccion/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.TransaccionController",
+    "Method": "GuardarTransaccion",
+    "RelativePath": "api/Transaccion/GuardarTransaccion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "transaccion",
+        "Type": "ApiProductos.Domains.Request.TransaccionRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.TransaccionController",
+    "Method": "ObtenerTransacciones",
+    "RelativePath": "api/Transaccion/ObtenerTransacciones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.TransaccionController",
+    "Method": "ObtenerTransaccion",
+    "RelativePath": "api/Transaccion/ObtenerTransaccionId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiProductos.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ApiProductos.WeatherForecast, ApiProductos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]
